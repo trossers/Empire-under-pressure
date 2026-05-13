@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><title>Components · Cards</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<style>html,body{margin:0;background:var(--parchment-1)} .frame{width:700px;padding:24px 32px;box-sizing:border-box}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .card{background:var(--parchment-2);border:1px solid var(--border-2);border-radius:4px;box-shadow:var(--shadow-1);overflow:hidden}
+  .chrome{background:var(--umber-1);color:var(--parchment-1);padding:8px 14px;display:flex;align-items:center;justify-content:space-between;font-family:var(--font-display);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase}
+  .chrome i{color:var(--gold-2)}
+  .body{padding:14px 18px}
+  .title{font-family:var(--font-display);font-size:15px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-1);margin:0 0 4px}
+  .text{font-family:var(--font-serif);font-size:14px;color:var(--ink-2);line-height:1.55;margin:0}
+  .gold-rule{height:1px;background:var(--gold-3);opacity:.5;margin:8px 0}
+  .meta{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;color:var(--ink-4);text-transform:uppercase;margin-top:6px}
+</style></head>
+<body>
+<div class="frame">
+  <div class="grid">
+    <div class="card">
+      <div class="chrome"><span><i class="ph ph-scroll"></i> Edict · Pending</span><i class="ph ph-dots-three"></i></div>
+      <div class="body">
+        <div class="title">Bread Subsidy</div>
+        <div class="gold-rule"></div>
+        <p class="text">Reduce the price of grain by one fifth for a single cycle. Estimated cost: 1,200 coin.</p>
+        <div class="meta">Drafted · Cycle XII · 03:14</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="chrome"><span><i class="ph ph-handshake"></i> Treaty · Active</span><i class="ph ph-dots-three"></i></div>
+      <div class="body">
+        <div class="title">Concord of Vorant</div>
+        <div class="gold-rule"></div>
+        <p class="text">Mutual non-aggression. Conditional grain transit. Renewable at the Crown's discretion.</p>
+        <div class="meta">Signed · Cycle VII</div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

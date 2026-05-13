@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><title>Components · Status Chips</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
+<style>html,body{margin:0;background:var(--parchment-1)} .frame{width:700px;padding:28px 32px;box-sizing:border-box}
+  .row{display:flex;gap:8px;align-items:center;margin-bottom:12px;flex-wrap:wrap}
+  .label{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.1em;color:var(--ink-4);text-transform:uppercase;width:96px;flex-shrink:0}
+  .chip{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:999px;font-family:var(--font-display);font-weight:500;font-size:11px;letter-spacing:.14em;text-transform:uppercase;border:1px solid transparent}
+  .chip i{font-size:10px}
+  .chip-stab{background:#dde3d0;color:#34432a;border-color:rgba(52,67,42,.2)}
+  .chip-warn{background:#f3e6cc;color:#6b4f1c;border-color:rgba(107,79,28,.25)}
+  .chip-danger{background:#f0d9da;color:#5c1417;border-color:rgba(92,20,23,.25)}
+  .chip-info{background:#d6dde6;color:#0f1a28;border-color:rgba(15,26,40,.2)}
+  .chip-neutral{background:var(--parchment-2);color:var(--ink-2);border-color:var(--border-2)}
+  .resource{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:999px;background:var(--parchment-2);border:1px solid var(--border-2);font-family:var(--font-mono);font-size:12px;color:var(--ink-1)}
+  .resource i{color:var(--gold-3);font-size:13px}
+  .delta-up{color:var(--moss-1);font-family:var(--font-mono);font-size:11px}
+  .delta-down{color:var(--oxblood-1);font-family:var(--font-mono);font-size:11px}
+</style></head>
+<body>
+<div class="frame">
+  <div class="row"><div class="label">Status</div>
+    <span class="chip chip-stab"><i class="ph-fill ph-circle"></i>Stable</span>
+    <span class="chip chip-warn"><i class="ph-fill ph-circle"></i>Restless</span>
+    <span class="chip chip-danger"><i class="ph-fill ph-circle"></i>In Revolt</span>
+    <span class="chip chip-info"><i class="ph ph-handshake"></i>In Treaty</span>
+    <span class="chip chip-neutral">Cycle XII</span>
+  </div>
+  <div class="row"><div class="label">Resources</div>
+    <span class="resource"><i class="ph ph-coins"></i>14,820</span>
+    <span class="resource"><i class="ph ph-grains"></i>9,212 <span class="delta-up">+340</span></span>
+    <span class="resource"><i class="ph ph-sword"></i>120 <span class="delta-down">−12</span></span>
+    <span class="resource"><i class="ph ph-users-three"></i>62,400</span>
+  </div>
+</div>
+</body>
+</html>

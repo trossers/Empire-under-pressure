@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><title>Colors · Semantic</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body{margin:0;background:var(--parchment-1)}
+  .frame{width:700px;padding:28px 32px;box-sizing:border-box}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 16px}
+  .row{display:flex;align-items:center;gap:12px}
+  .chip{width:32px;height:32px;border-radius:4px;border:1px solid var(--border-1);flex-shrink:0}
+  .name{font-family:var(--font-mono);font-size:11px;color:var(--ink-2)}
+  .desc{font-family:var(--font-serif);font-size:12px;color:var(--ink-4);font-style:italic}
+</style>
+</head>
+<body>
+<div class="frame">
+  <div class="grid">
+    <div class="row"><div class="chip" style="background:#f4ecd8"></div><div><div class="name">--bg-page</div><div class="desc">parchment-1</div></div></div>
+    <div class="row"><div class="chip" style="background:#ece2c8"></div><div><div class="name">--bg-raised</div><div class="desc">parchment-2 · cards</div></div></div>
+    <div class="row"><div class="chip" style="background:#3a1f1a"></div><div><div class="name">--bg-chrome</div><div class="desc">umber-1 · top/side rails</div></div></div>
+    <div class="row"><div class="chip" style="background:#1a120a"></div><div><div class="name">--fg-1</div><div class="desc">ink-1 · primary text</div></div></div>
+    <div class="row"><div class="chip" style="background:#7a1f23"></div><div><div class="name">--accent</div><div class="desc">oxblood-1 · seal</div></div></div>
+    <div class="row"><div class="chip" style="background:#1c2a3a"></div><div><div class="name">--link / --info</div><div class="desc">navy-1</div></div></div>
+    <div class="row"><div class="chip" style="background:#4a5c3a"></div><div><div class="name">--success</div><div class="desc">moss-1</div></div></div>
+    <div class="row"><div class="chip" style="background:#8a6432"></div><div><div class="name">--warning</div><div class="desc">gold-3</div></div></div>
+  </div>
+</div>
+</body>
+</html>

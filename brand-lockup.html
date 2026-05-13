@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><title>Brand · Wordmark</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body{margin:0;background:var(--parchment-1)}
+  .frame{
+    width:700px;padding:48px 40px;box-sizing:border-box;background:var(--parchment-1);
+    background-image:
+      radial-gradient(ellipse at 20% 10%, rgba(168,128,74,.10), transparent 60%),
+      radial-gradient(ellipse at 80% 90%, rgba(122,31,35,.06), transparent 55%);
+    text-align:center;
+  }
+  .empire {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 56px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ink-1);
+    line-height: 1;
+    margin: 0;
+  }
+  .rule {
+    display: flex; align-items: center; justify-content: center;
+    gap: 14px; margin: 14px auto;
+    color: var(--gold-3);
+  }
+  .rule .line { width: 90px; height: 1px; background: var(--gold-3); }
+  .rule .ornament { font-family: var(--font-serif); font-size: 13px; }
+  .under {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 18px;
+    letter-spacing: .42em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    margin: 0;
+  }
+</style>
+</head>
+<body>
+<div class="frame">
+  <h1 class="empire">Empire</h1>
+  <div class="rule"><span class="line"></span><span class="ornament">✦</span><span class="line"></span></div>
+  <p class="under">Under Pressure</p>
+</div>
+</body>
+</html>

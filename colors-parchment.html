@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><title>Colors · Parchment</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body{margin:0;background:var(--parchment-1)}
+  .frame{width:700px;padding:28px 32px;box-sizing:border-box}
+  .grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+  .sw{aspect-ratio:1;border:1px solid var(--border-1);border-radius:4px;display:flex;align-items:flex-end;padding:8px}
+  .sw .name{font-family:var(--font-mono);font-size:9.5px;letter-spacing:.06em;color:var(--ink-3)}
+  .sw.dark .name{color:var(--parchment-1)}
+  .meta{margin-top:14px;display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+  .meta div{font-family:var(--font-mono);font-size:9.5px;color:var(--ink-4);text-align:center}
+</style>
+</head>
+<body>
+<div class="frame">
+  <div class="grid">
+    <div class="sw" style="background:#faf6ec"><div class="name">parchment-0</div></div>
+    <div class="sw" style="background:#f4ecd8"><div class="name">parchment-1</div></div>
+    <div class="sw" style="background:#ece2c8"><div class="name">parchment-2</div></div>
+    <div class="sw" style="background:#e0d4b3"><div class="name">parchment-3</div></div>
+    <div class="sw" style="background:#c9b890"><div class="name">parchment-4</div></div>
+    <div class="sw" style="background:#f7efd9"><div class="name">vellum</div></div>
+  </div>
+  <div class="meta">
+    <div>#FAF6EC</div><div>#F4ECD8</div><div>#ECE2C8</div><div>#E0D4B3</div><div>#C9B890</div><div>#F7EFD9</div>
+  </div>
+</div>
+</body>
+</html>
