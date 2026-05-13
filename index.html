@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Empire Under Pressure — Student Simulator</title>
+<link rel="stylesheet" href="../../colors_and_type.css">
+<link rel="stylesheet" href="empire.css">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel" src="primitives.jsx"></script>
+<script type="text/babel" src="Chrome.jsx"></script>
+<script type="text/babel" src="KingdomDashboard.jsx"></script>
+<script type="text/babel" src="EdictScreen.jsx"></script>
+<script type="text/babel" src="DiplomacyScreen.jsx"></script>
+<script type="text/babel" src="WarRoom.jsx"></script>
+<script type="text/babel" src="Treasury.jsx"></script>
+<script type="text/babel" src="TurnEnd.jsx"></script>
+<script type="text/babel">
+const { useState } = React;
+const App = () => {
+  const [screen, setScreen] = useState("Realm");
+  const [ceremony, setCeremony] = useState(false);
+  const [sassy, setSassy] = useState(false);
+
+  const onNav = (t) => {
+    setScreen(t);
+  };
+
+  return (
+    <div data-screen-label="01 Empire Simulator">
+      <Chrome
+        active={screen}
+        onNav={onNav}
+        onSummonSassy={() => setSassy(true)}
+      />
+      {screen === "Realm" && <KingdomDashboard onSummonSassy={() => setSassy(true)} />}
+      {screen === "Diplomacy" && <DiplomacyScreen />}
+      {screen === "Treasury" && <Treasury />}
+      {screen === "War" && <WarRoom />}
+      {screen === "Realm" && (
+        <div style={{position:"fixed", bottom:24, right:24, zIndex:50}}>
+          <button className="eup-btn eup-btn-primary" onClick={() => setCeremony(true)}>
+            <i className="ph-bold ph-hourglass"></i>Advance the Cycle
+          </button>
+        </div>
+      )}
+      {ceremony && <TurnEnd onClose={() => setCeremony(false)} />}
+      {sassy && (
+        <div className="eup-scrim" onClick={() => setSassy(false)}>
+          <div className="eup-modal" onClick={e => e.stopPropagation()}>
+            <div className="eup-modal-header">
+              <div className="eup-modal-title">S.A.S.S.Y. · Counsel</div>
+              <i className="ph ph-x" style={{cursor:"pointer", color:"var(--gold-2)"}} onClick={() => setSassy(false)}></i>
+            </div>
+            <div className="eup-modal-body">
+              <div className="eup-vellum" style={{borderLeft:"3px solid var(--gold-3)"}}>
+                <p className="eup-vellum-quote">You summoned me, Majesty. I assumed it was about Vorant. It is always, lately, about Vorant. Three observations: the bread riots will not wait; the Eastern March goes uncourted; and your essay on sovereign mercy is, I notice, still blank. Shall we begin with the easiest of these — or the one most likely to be remembered?</p>
+                <div className="eup-vellum-sig">— S.A.S.S.Y.</div>
+              </div>
+            </div>
+            <div className="eup-modal-footer">
+              <Button kind="ghost" onClick={() => setSassy(false)}>Dismiss</Button>
+              <Button kind="primary" icon="ph-feather">Compose a Reply</Button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>

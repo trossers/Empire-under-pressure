@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Empire Under Pressure — Design System</title>
+<link rel="stylesheet" href="colors_and_type.css">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<template id="__bundler_thumbnail" data-bg-color="#faf6ec">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#faf6ec"/>
+    <circle cx="600" cy="340" r="160" fill="#7a1f23" stroke="#c9a566" stroke-width="6"/>
+    <text x="600" y="370" font-family="Georgia, serif" font-size="120" font-weight="700" fill="#c9a566" text-anchor="middle">E</text>
+    <rect x="380" y="560" width="440" height="2" fill="#8a6432"/>
+    <rect x="380" y="568" width="440" height="2" fill="#8a6432"/>
+    <text x="600" y="630" font-family="Georgia, serif" font-size="32" font-weight="600" letter-spacing="8" fill="#1a120a" text-anchor="middle">EMPIRE UNDER PRESSURE</text>
+  </svg>
+</template>
+<style>
+  html, body { margin:0; padding:0; }
+  body {
+    background: var(--parchment-0);
+    background-image:
+      radial-gradient(ellipse at 20% 5%, rgba(168,128,74,.10), transparent 60%),
+      radial-gradient(ellipse at 85% 95%, rgba(122,31,35,.05), transparent 55%);
+    font-family: var(--font-serif); color: var(--ink-1); min-height:100vh;
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 56px 32px 96px; }
+  .eyebrow { font-family: var(--font-display); font-size: 11px; letter-spacing: .26em; text-transform: uppercase; color: var(--gold-3); }
+  h1 { font-family: var(--font-display); font-weight:600; font-size: 56px; letter-spacing: .04em; text-transform: uppercase; margin: 8px 0 14px; line-height: 1.05; }
+  .lede { font-family: var(--font-italic); font-style: italic; font-size: 18px; color: var(--ink-3); line-height:1.6; max-width: 70ch; }
+  .rule { display:flex; align-items:center; gap:14px; margin: 32px 0 24px; }
+  .rule .line { flex:1; height:1px; background: var(--gold-3); opacity:.55; box-shadow: 0 3px 0 -2px var(--gold-3); }
+  .rule .ornament { color: var(--gold-3); font-size: 18px; }
+  .h2 { font-family: var(--font-display); font-weight:600; font-size: 14px; letter-spacing: .22em; text-transform: uppercase; color: var(--ink-2); margin: 0 0 16px; }
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  .card {
+    display:block; text-decoration:none; color: inherit;
+    background: var(--parchment-1); border:1px solid var(--border-2); border-radius: 4px;
+    padding: 22px 24px 20px; box-shadow: var(--shadow-1);
+    transition: all .2s var(--ease-imperial);
+    position: relative;
+  }
+  .card:hover { border-color: var(--gold-3); transform: translateY(-1px); box-shadow: var(--shadow-2); background: var(--parchment-2); }
+  .card .seal {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--oxblood-1); color: var(--gold-2);
+    display:flex; align-items:center; justify-content:center; box-shadow: var(--shadow-seal);
+    margin-bottom: 12px;
+  }
+  .card .seal i { font-size: 18px; }
+  .card.admin { background: var(--vellum); border-color: var(--gold-3); }
+  .card.admin .ck-name { color: var(--ink-1); }
+  .ck-tag { position: absolute; top: 18px; right: 20px; font-family: var(--font-display); font-size: 9.5px; letter-spacing:.22em; text-transform: uppercase; color: var(--gold-3); }
+  .ck-name { font-family: var(--font-display); font-weight:600; font-size: 18px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-1); margin: 0 0 6px; }
+  .card p { font-family: var(--font-serif); font-size: 14px; line-height: 1.55; color: var(--ink-2); margin: 0 0 12px; }
+  .ck-foot { font-family: var(--font-italic); font-style: italic; font-size: 12.5px; color: var(--ink-4); border-top: 1px solid var(--border-1); padding-top: 10px; }
+  .card.admin .ck-foot { border-top-color: var(--gold-3); opacity: .8; }
+  .ck-arrow { float:right; }
+  .meta { display:flex; gap: 24px; flex-wrap: wrap; margin-top: 24px; font-family: var(--font-mono); font-size: 12px; color: var(--ink-3); }
+  .meta b { color: var(--ink-1); font-weight: 500; }
+
+  /* Password gate */
+  .gate-scrim { position: fixed; inset: 0; background: rgba(26,18,10,.55); backdrop-filter: blur(2px); display: none; align-items: center; justify-content: center; z-index: 100; }
+  .gate-scrim.open { display: flex; }
+  .gate {
+    width: 420px; background: var(--parchment-1); border: 1px solid var(--gold-3); border-radius: 6px;
+    box-shadow: var(--shadow-3); overflow: hidden;
+  }
+  .gate-chrome { background: var(--umber-1); color: var(--gold-2); padding: 12px 22px; display: flex; align-items: center; justify-content: space-between; font-family: var(--font-display); font-size: 11px; letter-spacing: .22em; text-transform: uppercase; }
+  .gate-chrome i { color: var(--gold-2); cursor: pointer; }
+  .gate-body { padding: 26px 28px 22px; }
+  .gate-eyebrow { font-family: var(--font-display); font-size: 10.5px; letter-spacing: .26em; text-transform: uppercase; color: var(--gold-3); margin-bottom: 6px; }
+  .gate h2 { font-family: var(--font-display); font-weight: 600; font-size: 22px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-1); margin: 0 0 6px; }
+  .gate p { font-family: var(--font-italic); font-style: italic; font-size: 14.5px; line-height: 1.55; color: var(--ink-3); margin: 0 0 16px; }
+  .gate-input {
+    width: 100%; background: var(--parchment-0); border: 1px solid var(--border-2); border-radius: 3px;
+    padding: 12px 14px; font-family: var(--font-mono); font-size: 15px; letter-spacing: .12em; color: var(--ink-1);
+    box-shadow: var(--shadow-sunken); margin-bottom: 6px;
+  }
+  .gate-input:focus { outline: 0; border-color: var(--oxblood-1); box-shadow: var(--shadow-sunken), 0 0 0 3px rgba(122,31,35,.12); }
+  .gate-error { font-family: var(--font-italic); font-style: italic; font-size: 12.5px; color: var(--oxblood-1); min-height: 18px; margin-bottom: 10px; }
+  .gate-foot { display: flex; justify-content: flex-end; gap: 8px; padding: 14px 24px; border-top: 1px solid var(--border-1); background: var(--parchment-2); }
+  .gate-btn { font-family: var(--font-display); font-weight: 600; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; padding: 10px 20px; border-radius: 3px; border: 1px solid transparent; cursor: pointer; }
+  .gate-btn-primary { background: var(--oxblood-1); color: var(--parchment-0); box-shadow: var(--shadow-seal); }
+  .gate-btn-primary:hover { background: #8e2529; }
+  .gate-btn-ghost { background: transparent; color: var(--ink-2); }
+  .gate-btn-ghost:hover { background: var(--parchment-3); }
+</style>
+</head>
+<body>
+<main class="wrap" data-screen-label="00 System Index">
+  <div class="eyebrow">✦ Empire Under Pressure</div>
+  <h1>The complete system.</h1>
+  <p class="lede">Imperial academia. Vatican archive meets Oxford common room. Four surfaces — the simulator the students wield, the counselor that lives at their desk, the panel by which the professor turns the wheel, and the founding ceremony each kingdom passes through once.</p>
+
+  <div class="rule"><span class="line"></span><span class="ornament">✦</span><span class="line"></span></div>
+
+  <div class="h2">Surfaces</div>
+  <div class="grid">
+
+    <a class="card" href="ui_kits/onboarding/index.html">
+      <span class="ck-tag">step zero</span>
+      <div class="seal"><i class="ph ph-stamp"></i></div>
+      <h3 class="ck-name">Found Your Kingdom <i class="ph ph-arrow-up-right ck-arrow"></i></h3>
+      <p>Five-step ceremonial founding: doctrine, name &amp; motto, crest, counsel tone, the seal-stamp.</p>
+      <div class="ck-foot">student · runs once per term</div>
+    </a>
+
+    <a class="card" href="ui_kits/empire/index.html">
+      <span class="ck-tag">simulator</span>
+      <div class="seal"><i class="ph ph-crown"></i></div>
+      <h3 class="ck-name">Empire Under Pressure <i class="ph ph-arrow-up-right ck-arrow"></i></h3>
+      <p>Realm dashboard, edicts, diplomacy, treasury, war room, turn-end ceremony. The student's hands on the imperium.</p>
+      <div class="ck-foot">student · the daily surface</div>
+    </a>
+
+    <a class="card" href="ui_kits/sassy/index.html">
+      <span class="ck-tag">counselor</span>
+      <div class="seal" style="background: var(--vellum); color: var(--oxblood-1); box-shadow: 0 0 0 1px var(--gold-3), inset 0 0 0 1px var(--gold-2);"><i class="ph ph-quotes"></i></div>
+      <h3 class="ck-name">S.A.S.S.Y. — Counsel <i class="ph ph-arrow-up-right ck-arrow"></i></h3>
+      <p>Vellum dispatch, conversation thread, asides, in-context summon panels. The italic voice of the chancellery.</p>
+      <div class="ck-foot">student · italic, oblique, never sycophantic</div>
+    </a>
+
+    <a class="card admin" href="ui_kits/godmode/index.html" id="godmode-card">
+      <span class="ck-tag">admin</span>
+      <div class="seal" style="background: var(--gold-2); color: var(--umber-1); box-shadow: 0 0 0 1px var(--oxblood-1);"><i class="ph ph-eye"></i></div>
+      <h3 class="ck-name">GOD-MODE <i class="ph ph-arrow-up-right ck-arrow"></i></h3>
+      <p>Eighteen-kingdom overview, dispatch center, sovereign roster, essay queue, world-event injector, audit ribbon.</p>
+      <div class="ck-foot">professor · behind the curtain</div>
+    </a>
+
+  </div>
+
+  <div class="rule"><span class="line"></span><span class="ornament">⁂</span><span class="line"></span></div>
+
+  <div class="h2">Foundations</div>
+  <div class="grid">
+    <a class="card" href="README.md">
+      <h3 class="ck-name">README · principles</h3>
+      <p>Voice, vocabulary, palette, type, motion, layout. The codebook.</p>
+      <div class="ck-foot">design system manifest</div>
+    </a>
+    <a class="card" href="colors_and_type.css">
+      <h3 class="ck-name">colors_and_type.css</h3>
+      <p>All design tokens — parchment, ink, oxblood, gold, navy, moss, umber — plus type scale and elevation.</p>
+      <div class="ck-foot">single source of truth</div>
+    </a>
+  </div>
+
+  <div class="meta">
+    <span><b>Surfaces</b> · 4</span>
+    <span><b>Components</b> · 30+</span>
+    <span><b>Type families</b> · Cinzel · Spectral · JetBrains Mono</span>
+    <span><b>Built</b> · from written brief, no source materials</span>
+  </div>
+</main>
+
+<div class="gate-scrim" id="gate" role="dialog" aria-modal="true">
+  <form class="gate" id="gate-form">
+    <div class="gate-chrome">
+      <span><i class="ph ph-key" style="margin-right:8px"></i>Chancellery — Restricted</span>
+      <i class="ph ph-x" id="gate-close"></i>
+    </div>
+    <div class="gate-body">
+      <div class="gate-eyebrow">✦ GOD-MODE</div>
+      <h2>The professor's seal.</h2>
+      <p>This passage is sealed to administration. Present the chancellery passphrase to proceed.</p>
+      <input class="gate-input" id="gate-input" type="password" placeholder="chancellery passphrase" autocomplete="off" autofocus />
+      <div class="gate-error" id="gate-error"></div>
+    </div>
+    <div class="gate-foot">
+      <button type="button" class="gate-btn gate-btn-ghost" id="gate-cancel">Withdraw</button>
+      <button type="submit" class="gate-btn gate-btn-primary">Present seal</button>
+    </div>
+  </form>
+</div>
+
+<script>
+(function(){
+  var PASS = "admin26";
+  var card = document.getElementById("godmode-card");
+  var gate = document.getElementById("gate");
+  var form = document.getElementById("gate-form");
+  var input = document.getElementById("gate-input");
+  var err = document.getElementById("gate-error");
+  var close = document.getElementById("gate-close");
+  var cancel = document.getElementById("gate-cancel");
+  var dest = card.getAttribute("href");
+  function open(){ gate.classList.add("open"); err.textContent=""; input.value=""; setTimeout(function(){ input.focus(); }, 50); }
+  function shut(){ gate.classList.remove("open"); }
+  card.addEventListener("click", function(e){
+    if (sessionStorage.getItem("godmode-ok") === "1") return;
+    e.preventDefault(); open();
+  });
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    if (input.value === PASS) {
+      sessionStorage.setItem("godmode-ok", "1");
+      shut();
+      window.location.href = dest;
+    } else {
+      err.textContent = "The seal is not recognized. The chancellery turns you away.";
+      input.select();
+    }
+  });
+  close.addEventListener("click", shut);
+  cancel.addEventListener("click", shut);
+  gate.addEventListener("click", function(e){ if (e.target === gate) shut(); });
+  document.addEventListener("keydown", function(e){ if (e.key === "Escape") shut(); });
+})();
+</script>
+</body>
+</html>
